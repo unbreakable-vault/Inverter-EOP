@@ -5,7 +5,7 @@
 **Board:** Digilent Genesys-2 (XC7K325T-2FFG900C).
 
 ## Build (after downloading this repo as ZIP)
-- Install Vivado (2020.2 or newer is fine).
+- Install Vivado (2021.1 or newer is fine).
 - Open Vivado TCL Console and run:
 
 **Open Vivado TCL Console and Run:**  
