@@ -9,7 +9,7 @@ module top_two_paths_diffclk (
 );
   wire sys_clk;
 
-  // LVDS differential clock buffer (7-series)
+  // for clock
   IBUFDS #(.DIFF_TERM("TRUE"), .IBUF_LOW_PWR("FALSE"))
   u_ibufds (.I(sys_clk_p), .IB(sys_clk_n), .O(sys_clk));
 
