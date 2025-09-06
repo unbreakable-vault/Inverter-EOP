@@ -15,9 +15,7 @@ set_property SLEW FAST                [get_ports {OUT_A OUT_B OUT_XOR}]
 set_property DONT_TOUCH true          [get_cells -hier *u_chain_a*]
 set_property DONT_TOUCH true          [get_cells -hier *u_chain_b*]
 
-## Light floorplanning (optional but helpful):
-## Create two pblocks to nudge the router to use different resources.
-## Replace SLICE_X..Y.. ranges with legal coordinates for XC7K325T.
+
 create_pblock PB_A
 resize_pblock PB_A -add {SLICE_X10Y60:SLICE_X40Y120}
 add_cells_to_pblock PB_A [get_cells -hier -filter {NAME =~ *u_chain_a*}]
