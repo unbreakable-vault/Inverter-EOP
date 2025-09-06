@@ -27,7 +27,7 @@ This simple design demonstrates how placement and routing in FPGAs introduce sma
    cd <path-to-repo>/scripts
    source create_project.tcl
    source build.tcl
-- Program the FPGA from **Hardware Manager**.
+4. Program the FPGA from **Hardware Manager**.
 
 ## Pins
 Edit `constraints/genesys2_pins.xdc`:
