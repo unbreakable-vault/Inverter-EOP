@@ -14,7 +14,7 @@ module top_two_paths (
     always @(posedge sys_clk) begin
         div <= div + 1'b1;
     end
-    wire stim = div[0];   // ~sys_clk/2; choose another bit for lower freq if needed
+    wire stim = div[0];   
     wire a_out, b_out;
 
 
