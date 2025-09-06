@@ -32,5 +32,5 @@ Edit `constraints/genesys2_pins.xdc`:
 
 The design implements two parallel 3-inverter chains, both driven by the same stimulus (`sys_clk`). Their outputs (`OUT_A` and `OUT_B`) are compared directly, and also combined into `OUT_XOR` so that skew appears as short pulses.
 
-![RTL schematic](doc/inverter_schematic.jpg)
+![RTL schematic](inverter_schematic.jpg)
 
