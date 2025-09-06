@@ -27,3 +27,15 @@ This simple design demonstrates how placement and routing in FPGAs introduce sma
    cd <path-to-repo>/scripts
    source create_project.tcl
    source build.tcl
+- Program the FPGA from **Hardware Manager**.
+
+## Pins
+Edit `constraints/genesys2_pins.xdc`:
+- Map `sys_clk` to the on-board oscillator pin from the **Genesys-2 Master XDC**.
+- Choose two pins in the **same I/O bank** for `OUT_A` / `OUT_B` (and one for `OUT_XOR`).
+- Keep identical `IOSTANDARD/DRIVE/SLEW`.
+
+## Measure
+- Probe `OUT_A` and `OUT_B` with identical 10× probes (short ground springs).
+- Trigger on `OUT_A`; measure Δt at 50% crossings.
+- `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
