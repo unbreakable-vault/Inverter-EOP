@@ -14,7 +14,7 @@ module top_two_paths (
     always @(posedge sys_clk) begin
         div <= div + 1'b1;
     end
-    wire stim = div[0];  // right now, it is half of the sys_clk. If you want the slowest signal , then use div[3].
+    wire stim = div[0];  // right now, it is half of the sys_clk. If you want the slowest signal, then use div[3].
     wire a_out, b_out;
 
 
