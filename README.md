@@ -8,6 +8,8 @@
 - Install Vivado (2020.2 or newer is fine).
 - Open Vivado TCL Console and run:
 
+**Open Vivado TCL Console and Run:**  
+   ```tcl
    cd <path-to-repo>/scripts
    source create_project.tcl
    source build.tcl
