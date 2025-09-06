@@ -4,6 +4,10 @@
 
 **Board:** Digilent Genesys-2 (XC7K325T-2FFG900C).
 
+The design implements two parallel 3-inverter chains, both fed by the same `sys_clk`. Their outputs (`OUT_A` and `OUT_B`) are compared directly, and also combined into `OUT_XOR` so that skew appears as short pulses.
+
+![RTL schematic](doc/inverter%20skew.jpg)
+
 ## Build (after downloading this repo as ZIP)
 - Install Vivado (2021.1 or newer is fine).
 - Open Vivado TCL Console and run:
