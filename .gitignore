@@ -1,0 +1,21 @@
+# Vivado
+**/.Xil/**
+**/*.jou
+**/*.log
+**/*.str
+**/*.rpt
+**/*.cache/**
+**/*.hw/**
+**/*.ip_user_files/**
+**/*.sim/**
+**/*.runs/**
+**/*.srcs/**
+**/*.sdk/**
+**/*.ltx
+**/*.bit
+**/*.bin
+vivado/**
+
+# OS junk
+.DS_Store
+Thumbs.db
