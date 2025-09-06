@@ -13,6 +13,8 @@
    cd <path-to-repo>/scripts
    source create_project.tcl
    source build.tcl
+```
+
 - Program the FPGA from **Hardware Manager**.
 
 ## Pins
