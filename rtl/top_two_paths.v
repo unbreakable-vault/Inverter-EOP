@@ -1,4 +1,3 @@
-// rtl/top_two_paths.v
 // Top-level: clock divider creates a stimulus; two 3-stage inverter chains in parallel.
 // Route out both chains to pins; optional XOR for on-board skew visualization.
 
@@ -17,6 +16,7 @@ module top_two_paths (
     end
     wire stim = div[0];   // ~sys_clk/2; choose another bit for lower freq if needed
     wire a_out, b_out;
+
 
     (* KEEP_HIERARCHY = "YES" *)
     inv_chain #(.STAGES(3)) u_chain_a (
