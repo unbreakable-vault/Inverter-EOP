@@ -33,8 +33,8 @@ Edit `constraints/genesys2_pins.xdc`:
 - `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
 
 
-OUT_A:   ____/‾‾‾‾‾‾
-OUT_B:   _________/‾‾‾‾‾‾
+OUT_A:   ____/‾‾‾‾‾‾‾‾
+OUT_B:   _________/‾‾‾
 Δt:         <---->
 XOR:     ___/‾‾‾‾\____
 
