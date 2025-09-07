@@ -1,10 +1,1 @@
-open_project ../vivado/inverter_skew/inverter_skew.xpr
-reset_run synth_1
-launch_runs synth_1 -jobs 8
-wait_on_run synth_1
-
-reset_run impl_1
-launch_runs impl_1 -to_step write_bitstream -jobs 8
-wait_on_run impl_1
-
-puts "Bitstream written. Check the vivado/inverter_skew tree."
+TO BE CONTINUED
