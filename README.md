@@ -28,6 +28,6 @@ Edit `constraints/genesys2_pins.xdc`:
 - Keep identical `IOSTANDARD/DRIVE/SLEW`.
 
 ## Measure
-- Probe `OUT_A` and `OUT_B` with identical 10× probes (short ground springs).
-- Trigger on `OUT_A`; measure Δt at 50% crossings.
+- Probe `OUT_A` and `OUT_B` with identical 10× probes (short ground springs). (10× probes: These are standard oscilloscope probes set to attenuate the signal by a factor of 10. This reduces loading on the circuit and increases measurement bandwidth.)
+- Trigger on `OUT_A`; measure Δt at 50% crossings. (50% crossing means measure the point where each signal’s voltage is halfway between its low and high levels (midpoint of the logic swing)) (Δt is the time difference (skew) between the two signals)
 - `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
