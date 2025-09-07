@@ -38,4 +38,6 @@ OUT_B:   _________/‾‾‾
 Δt:         <---->
 XOR:     ___/‾‾‾‾\____
 
+
+<pre> ```text OUT_A: ────┐ ┌───── OUT_B: ──────┐ └──── Δt: <------> XOR: ────┐ ┌─ └───┘ ``` </pre>
 Here, the XOR pulse width equals the time difference between the two rising edges.
