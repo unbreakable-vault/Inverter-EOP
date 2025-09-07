@@ -32,12 +32,10 @@ Edit `constraints/genesys2_pins.xdc`:
 - Trigger on `OUT_A`; measure Δt at 50% crossings. (50% crossing means measure the point where each signal’s voltage is halfway between its low and high levels (midpoint of the logic swing)) (Δt is the time difference (skew) between the two signals)
 - `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
 
-
+```text
 OUT_A:   ____/‾‾‾‾‾‾‾‾
 OUT_B:   _________/‾‾‾
 Δt:         <---->
 XOR:     ___/‾‾‾‾\____
-
-
-<pre> ```text OUT_A: ────┐ ┌───── OUT_B: ──────┐ └──── Δt: <------> XOR: ────┐ ┌─ └───┘ ``` </pre>
+```
 Here, the XOR pulse width equals the time difference between the two rising edges.
