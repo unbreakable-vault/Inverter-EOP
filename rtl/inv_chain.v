@@ -1,29 +1,20 @@
-// 3-stage inverter chain using LUT1 primitives.
-// DONT_TOUCH/KEEP prevent the tools from folding the chain away.
-
-`timescale 1ns/1ps
-
-module inv_chain #(
-    parameter STAGES = 3
-) (
-    input  wire din,
-    output wire dout
+(* keep_hierarchy = "yes" *)
+module inv3_chain(
+  input  wire din,
+  output wire dout
 );
-    // Internal nets between stages
-    wire [STAGES:0] n;
-    assign n[0] = din;
 
-    genvar i;
-    generate
-        for (i = 0; i < STAGES; i = i + 1) begin : G_INV
-            // LUT1 with INIT=2'b01 implements NOT(I0)
-            (* KEEP = "TRUE", DONT_TOUCH = "TRUE" *)
-            LUT1 #(.INIT(2'b01)) u_inv (
-                .I0(n[i]),
-                .O (n[i+1])
-            );
-        end
-    endgenerate
+  (* KEEP = "true", DONT_TOUCH = "true" *)
+   wire n1, n2;
 
-    assign dout = n[STAGES];
+ // Each stage: NOT(I0) = INIT=2'b01
+  (* DONT_TOUCH = "true" *)
+  LUT1 #(.INIT(2'b01)) inv0 (.I0(din), .O(n1));
+  
+  (* DONT_TOUCH = "true" *)
+  LUT1 #(.INIT(2'b01)) inv1 (.I0(n1),  .O(n2));
+  
+  (* DONT_TOUCH = "true" *)
+  LUT1 #(.INIT(2'b01)) inv2 (.I0(n2),  .O(dout));
+  
 endmodule
