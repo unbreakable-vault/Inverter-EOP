@@ -1,38 +1,13 @@
-// Top-level: clock divider creates a stimulus; two 3-stage inverter chains in parallel.
-// Route out both chains to pins; optional XOR for on-board skew visualization.
-
-`timescale 1ns/1ps
-
-module top_two_paths (
-    input  wire sys_clk,    // map to on-board system clock (from Master XDC)
-    output wire OUT_A,      // to scope CH1
-    output wire OUT_B,      // to scope CH2
-    output wire OUT_XOR     // optional: XOR(OUT_A, OUT_B) -> scope CH3
+module two_chains(
+  input  wire sys_clk,        // test stimulus inside FPGA
+  output wire output_A,      //  chain outputs (internal nets)
+  output wire output_B,     //  chain outputs (internal nets)
+  output wire output_XOR   //  chain outputs (internal nets)
 );
 
-    reg [7:0] div = 8'd0;
-    always @(posedge sys_clk) begin
-        div <= div + 1'b1;
-    end
-    wire stim = div[0];  // right now, it is half of the sys_clk. If you want a slower signal, then use div[3] or div[5].
-    wire a_out, b_out;
-
-
-    (* KEEP_HIERARCHY = "YES" *)
-    inv_chain #(.STAGES(3)) u_chain_a (
-        .din (stim),
-        .dout(a_out)
-    );
-
-    (* KEEP_HIERARCHY = "YES" *)
-    inv_chain #(.STAGES(3)) u_chain_b (
-        .din (stim),
-        .dout(b_out)
-    );
-
-    // Optional: XOR pulse ~ proportional to edge-to-edge skew
-    assign OUT_XOR = a_out ^ b_out;
-    assign OUT_A = a_out;
-    assign OUT_B = b_out;
-
+ // Keep instances separate; prevents merging or resource sharing.
+   (* DONT_TOUCH="true" *) inv3_chain A (.din(sys_clk), .dout(output_A));
+   (* DONT_TOUCH="true" *)  inv3_chain B (.din(sys_clk), .dout(output_B));
+   (* DONT_TOUCH="true" *) assign output_XOR = output_B ^ output_A ;
+  
 endmodule
