@@ -45,6 +45,9 @@ Edit `constraints/genesys2_pins.xdc`:
 - Choose two pins in the **same I/O bank** for `OUT_A` / `OUT_B` (and one for `OUT_XOR`).
 - Keep identical `IOSTANDARD/DRIVE/SLEW`.
 
+## Pin Control
+
+
 ## Measure
 - Probe `OUT_A`, `OUT_B`, and `OUT_XOR` with Mixed Signal Oscilloscope 2 Series MSO
 - Trigger on `OUT_A`; measure at 25 MHz (max value of the AFG)
