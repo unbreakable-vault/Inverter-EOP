@@ -22,6 +22,11 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 *Floorplan view showing Pblock_A (top-left), Pblock_B (bottom-right), and XOR (center).*
 
 
+<p align="center">
+  <img src="pictures/FloorPlanning.png" alt="Floorplan result" width="400"/>
+  <br>
+  <em>Floorplan view showing Pblock_A (top-left), Pblock_B (bottom-right), and XOR (center).</em>
+</p>
 
 
 
