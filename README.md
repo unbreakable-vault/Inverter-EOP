@@ -52,6 +52,11 @@ For flexible testing, the PMOD Thingy was used to drive the `sys_clk` input sign
 - In the floorplanned design:
     - `sys_clk` from PMOD Thingy → feeds both inverter chains (`Pblock_A` and `Pblock_B`).
     - Outputs (`OUT_A`, `OUT_B`, `OUT_XOR`) are then probed on the oscilloscope for skew measurements.
+ 
+  <p align="center">
+  <img src="pictures/PMOD Thingy.JPG" alt="Floorplan result" width="400"/>
+  <br>
+</p>
 
 
 ## Measure
