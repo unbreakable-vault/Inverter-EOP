@@ -46,6 +46,12 @@ Edit `constraints/genesys2_pins.xdc`:
 - Keep identical `IOSTANDARD/DRIVE/SLEW`.
 
 ## Pin Control
+For flexible testing, the PMOD Thingy was used to drive the `sys_clk` input signal through the `JA1` PMOD header on the Genesys-2 board.
+- The Thingy can generate a controllable square-wave or toggled signal, which substitutes for an external function generator.
+- This allows easy switching of input frequency and duty cycle during experiments.
+- In the floorplanned design:
+    - `sys_clk` from PMOD Thingy → feeds both inverter chains (`Pblock_A` and `Pblock_B`).
+    - Outputs (`OUT_A`, `OUT_B`, `OUT_XOR`) are then probed on the oscilloscope for skew measurements.
 
 
 ## Measure
