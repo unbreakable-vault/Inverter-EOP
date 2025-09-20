@@ -15,7 +15,6 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 - **A chain** (`A/inv0..2`) fixed at **SLICE_X0Y349** inside **pblock_A** (top‑left corner).
 - **B chain** (`B/inv0..2`) fixed at **SLICE_X153Y0** inside **pblock_B** (bottom‑right corner).
 - **XOR** (`u_xor` LUT2) fixed at **SLICE_X76Y174** inside **pblock_XOR** (center window X=70..82, Y=168..180).
-- All three Pblocks have `EXCLUDE_PLACEMENT=1`.
 - Fabric bounds (Kintex‑7 XC7K325T): **X=0..153, Y=0..349**.
 
 
@@ -45,8 +44,8 @@ Edit `constraints/genesys2_pins.xdc`:
 - Keep identical `IOSTANDARD/DRIVE/SLEW`.
 
 ## Measure
-- Probe `OUT_A` and `OUT_B` with identical 10× probes (short ground springs). (10× probes: These are standard oscilloscope probes set to attenuate the signal by a factor of 10. This reduces loading on the circuit and increases measurement bandwidth.)
-- Trigger on `OUT_A`; measure Δt at 50% crossings. (50% crossing means measure the point where each signal’s voltage is halfway between its low and high levels (midpoint of the logic swing)) (Δt is the time difference (skew) between the two signals)
+- Probe `OUT_A`, `OUT_B`, and `OUT_XOR` with Mixed Signal Oscilloscope 2 Series MSO
+- Trigger on `OUT_A`; measure at 25 MHz (max value of the AFG)
 - `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
 
 ```text
