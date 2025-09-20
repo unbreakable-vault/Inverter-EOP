@@ -9,7 +9,7 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 ![RTL schematic](pictures/inverter_skew_Pblocks.jpg)
 
 ## Build (after downloading this repo as ZIP)
-- Install Vivado (2021.1 or newer is fine).
+- Install Vivado (2023.1).
 - Open Vivado TCL Console and run:
 
 **Open Vivado TCL Console and Run:**  
