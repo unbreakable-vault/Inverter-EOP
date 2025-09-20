@@ -8,16 +8,15 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 
 ![RTL schematic](pictures/inverter_skew_Pblocks.jpg)
 
-**Floorplanning complete and locked with Pblocks:**
-- **pblock_A (top‑left corner):** `A/inv0..2` all fixed in slice **SLICE_X0Y349** (STATUS=FIXED).
-- **pblock_B (bottom‑right corner):** `B/inv0..2` all fixed in slice **SLICE_X153Y0** (STATUS=FIXED).
-- **pblock_XOR (center window):** `u_xor` (LUT2) fixed at **SLICE_X76Y174**, inside a small central region (X=70..82, Y=168..180).
-- All three Pblocks have `EXCLUDE_PLACEMENT=1`.  
-- Net **`xor_int`** is routed: driver `u_xor/O` → sink `output_XOR_OBUF_inst/I`.  
-- Fabric bounds for this part: **X=0..153, Y=0..349**.
+
 
 ### Device Floorplan
 > A in the extreme **top‑left**, B in the extreme **bottom‑right**, XOR centered.
+> - **A chain** (`A/inv0..2`) fixed at **SLICE_X0Y349** inside **pblock_A** (top‑left corner).
+- **B chain** (`B/inv0..2`) fixed at **SLICE_X153Y0** inside **pblock_B** (bottom‑right corner).
+- **XOR** (`u_xor` LUT2) fixed at **SLICE_X76Y174** inside **pblock_XOR** (center window X=70..82, Y=168..180).
+- All three Pblocks have `EXCLUDE_PLACEMENT=1`.
+- Fabric bounds (Kintex‑7 XC7K325T): **X=0..153, Y=0..349**.
 
 
 
