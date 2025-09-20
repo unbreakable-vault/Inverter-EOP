@@ -18,9 +18,6 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 - Fabric bounds (Kintex‑7 XC7K325T): **X=0..153, Y=0..349**.
 
 
-![Floorplan result](pictures/FloorPlanning.png)  
-*Floorplan view showing Pblock_A (top-left), Pblock_B (bottom-right), and XOR (center).*
-
 
 <p align="center">
   <img src="pictures/FloorPlanning.png" alt="Floorplan result" width="400"/>
