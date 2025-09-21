@@ -6,8 +6,8 @@
 set_property PACKAGE_PIN B13 [get_ports sys_clk]
 set_property IOSTANDARD LVCMOS33 [get_ports sys_clk]
 set_property PULLDOWN true [get_ports sys_clk]
-# NOTE: 100.000 ns = 10 MHz for STA only; adjust if you want STA to match your generator
-create_clock -period 100.000 -name sys_clk_ext [get_ports sys_clk]
+# Model the fastest generator setting I plan to use (25 MHz => 40 ns)
+create_clock -period 40.000 -name sys_clk_ext [get_ports sys_clk]
 
 ## Outputs on JB1/JB2/JB3 (Pmod JB pins 1/2/3)
 set_property PACKAGE_PIN G14 [get_ports output_A]         ;# JB1
