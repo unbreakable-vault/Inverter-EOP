@@ -3,12 +3,26 @@
 // '1' press #1: sys_clk HIGH -> heartbeat pattern (both LEDs pulse together)
 // '1' press #2: sys_clk LOW  -> D1 ON + D2 OFF
 // Messages: "sys_clk -> HIGH" or "sys_clk -> LOW" in Serial Monitor
+//
+// Latest FPGA constraints / wiring:
+//   PMOD JB1 -> sys_clk  (FPGA pin G14)   [driven by PMOD-Thingy]
+//   PMOD JA1 -> output_A (FPGA pin B13)   [driven by FPGA, so leave JA pins Hi-Z here]
+//   PMOD JA3 -> output_B (FPGA pin D17)   [driven by FPGA]
+//   PMOD JA7 -> output_XOR (FPGA pin G13) [driven by FPGA]
+//
+// IMPORTANT: Keep JA1/JA3/JA7 as inputs (no pull-ups) on PMOD-Thingy,
+// so the FPGA can drive them safely without contention.
 
 #define LED_D1 LED_BUILTIN_RX   // PC6, active-low
 #define LED_D2 LED_BUILTIN_TX   // PC7, active-low
 static constexpr bool LED_ACTIVE_LOW = true;
 
-enum { JA1_BIT = 1 };           // JA1 bit on PORT_JA
+// --- PMOD-Thingy port bit indices ---
+// JB1 (sys_clk output) lives on PORT_JB bit 1 (per PMOD-Thingy mapping).
+enum { JB1_BIT = 1 };
+
+// For safety, explicitly identify JA bits that the FPGA will drive:
+enum { JA1_BIT = 1, JA3_BIT = 3, JA7_BIT = 7 };
 
 // LED helpers
 inline void ledWrite(uint8_t pin, bool on) {
@@ -45,16 +59,16 @@ void serviceHeartbeat() {
   }
 }
 
-// set sys_clk and mode
+// set sys_clk (drives JB1) and LED mode
 void set_sysclk(bool high) {
   if (high) {
-    PORT_JA |=  (1 << JA1_BIT);
+    PORT_JB |=  (1 << JB1_BIT);   // sys_clk HIGH on JB1
     sysclk_high = true;
     mode = HEARTBEAT_BOTH;
     step_idx = 0; t_next = 0;
     Serial.println("sys_clk -> HIGH");
   } else {
-    PORT_JA &= ~(1 << JA1_BIT);
+    PORT_JB &= ~(1 << JB1_BIT);   // sys_clk LOW on JB1
     sysclk_high = false;
     mode = SOLID_D2_ON_D1_OFF;
     Serial.println("sys_clk -> LOW");
@@ -71,13 +85,20 @@ void setup() {
   ledWrite(LED_D2, false);  // D2 OFF
 
   Serial.begin(9600);
-  // JA1 as output, start LOW
-  DDR_JA |= (1 << JA1_BIT);
-  PORT_JA &= ~(1 << JA1_BIT);
+
+  // ---- Configure PMOD directions ----
+  // 1) sys_clk on JB1: output, start LOW
+  DDR_JB |=  (1 << JB1_BIT);   // JB1 as output
+  PORT_JB &= ~(1 << JB1_BIT);  // drive LOW initially
   sysclk_high = false;
+
+  // 2) JA pins that the FPGA will drive (output_A/B/XOR): make them inputs, pull-ups OFF
+  DDR_JA  &= ~((1 << JA1_BIT) | (1 << JA3_BIT) | (1 << JA7_BIT));  // inputs
+  PORT_JA &= ~((1 << JA1_BIT) | (1 << JA3_BIT) | (1 << JA7_BIT));  // no pull-ups
+
   mode = SOLID_D1_ON_D2_OFF;
 
-  Serial.println("Ready. Press '1' to toggle sys_clk.");
+  Serial.println("Ready. Press '1' to toggle sys_clk (on JB1).");
 }
 
 void loop() {
@@ -85,6 +106,7 @@ void loop() {
     char c = Serial.read();
     if (c == '1') {
       set_sysclk(!sysclk_high);
+
       // apply static LED states immediately
       if (mode == SOLID_D1_ON_D2_OFF) {
         ledWrite(LED_D1, true);
