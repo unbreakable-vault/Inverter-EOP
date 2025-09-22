@@ -11,10 +11,10 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 
 
 ### Device Floorplan
-- Pblock_A in the extreme **top‑left**, Pblock_B in the extreme **bottom‑right**, Pblock_XOR centered.
-- **A chain** (`A/inv0..2`) fixed at **SLICE_X0Y349** inside **pblock_A** (top‑left corner).
-- **B chain** (`B/inv0..2`) fixed at **SLICE_X153Y0** inside **pblock_B** (bottom‑right corner).
-- **XOR** (`u_xor` LUT2) fixed at **SLICE_X76Y174** inside **pblock_XOR** (center window X=70..82, Y=168..180).
+- block_A in the extreme **top‑left**, block_B in the extreme **bottom‑right**, block_XOR centered.
+- **A chain** (`A/inv0..2`) fixed at **SLICE_X0Y349** inside **block_A** (top‑left corner).
+- **B chain** (`B/inv0..2`) fixed at **SLICE_X153Y0** inside **block_B** (bottom‑right corner).
+- **XOR** (`u_xor` LUT2) fixed at **SLICE_X76Y174** inside **block_XOR** (center window X=70..82, Y=168..180).
 - Fabric bounds (Kintex‑7 XC7K325T): **X=0..153, Y=0..349**.
 
 
