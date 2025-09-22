@@ -6,7 +6,7 @@
 
 The design implements two parallel 3-inverter chains, both fed by the same `sys_clk`. Their outputs (`OUT_A` and `OUT_B`) are compared directly, and also combined into `OUT_XOR` so that skew appears as short pulses.
 
-![RTL schematic](pictures/inverter_skew_Pblocks.jpg)
+![RTL schematic](pictures/inverter_skew_blocks.jpg)
 
 
 
