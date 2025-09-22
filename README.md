@@ -72,9 +72,3 @@ XOR:     ___/‾‾‾‾\____
 ```
 Here, the XOR pulse width equals the time difference between the two rising edges.
 
-
-## Expectation Note
-- In pure RTL/timing sim the two chains are identical, so output_XOR may be low. On real silicon, differences in placement/routing create finite skew. With A and B far apart, the XOR can produce wide pulses (ns … tens of ns). With A and B mirrored and close, the XOR pulses shrink to tens of ps (too short for the scope).
-- There’s also a 200 MHz LVDS oscillator on AD12/AD11 I can use later for on‑chip calibration (IDELAYCTRL/MMCM).
-
-
