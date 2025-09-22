@@ -8,7 +8,18 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 
 ![RTL schematic](pictures/inverter_skew_blocks.jpg)
 
+## Measure
+- Probe `OUT_A`, `OUT_B`, and `OUT_XOR` with Mixed Signal Oscilloscope 2 Series MSO
+- Trigger on `OUT_A`; measure at 25 MHz (max value of the AFG)
+- `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
 
+```text
+OUT_A:   ____/‾‾‾‾‾‾‾‾
+OUT_B:   _________/‾‾‾
+Δt:         <---->
+XOR:     ___/‾‾‾‾\____
+```
+Here, the XOR pulse width equals the time difference between the two rising edges.
 
 ### Device Floorplan
 - block_A in the extreme **top‑left**, block_B in the extreme **bottom‑right**, block_XOR centered.
@@ -58,17 +69,4 @@ For flexible testing, the PMOD Thingy was used to drive the `sys_clk` input sign
   <br>
 </p>
 
-
-## Measure
-- Probe `OUT_A`, `OUT_B`, and `OUT_XOR` with Mixed Signal Oscilloscope 2 Series MSO
-- Trigger on `OUT_A`; measure at 25 MHz (max value of the AFG)
-- `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
-
-```text
-OUT_A:   ____/‾‾‾‾‾‾‾‾
-OUT_B:   _________/‾‾‾
-Δt:         <---->
-XOR:     ___/‾‾‾‾\____
-```
-Here, the XOR pulse width equals the time difference between the two rising edges.
 
