@@ -56,13 +56,12 @@ Edit `constraints/genesys2_pins.xdc`:
 - Choose two pins in the **same I/O bank** for `OUT_A` / `OUT_B` (and one for `OUT_XOR`).
 - Keep identical `IOSTANDARD/DRIVE/SLEW`.
 
-## Pin Control
-For flexible testing, the PMOD Thingy was used to drive the `sys_clk` input signal through the `JA1` PMOD header on the Genesys-2 board.
-- The Thingy can generate a controllable square-wave or toggled signal, which substitutes for an external function generator.
-- This allows easy switching of input frequency and duty cycle during experiments.
-- In the floorplanned design:
-    - `sys_clk` from PMOD Thingy → feeds both inverter chains (`Piece_A` and `Piece_B`).
-    - Outputs (`OUT_A`, `OUT_B`, `OUT_XOR`) are then probed on the oscilloscope for skew measurements.
+## Waveform View
+Tekronix MSO2 is used `https://www.tek.com/en/datasheet/2-series-mso-mixed-signal-oscilloscope-datasheet` to measure the skew between `output_A` and `output_B`.
+- AFG Setting: Square, 25 MHz, 3.3 Vpp
+- Channel 1 (`output_A`): 1.1 V/div, 10X Scope, 70Hz Bandwidth
+- Channel 2 (`output_B`): 1.1 V/div, 10X Scope, 70Hz Bandwidth
+
  
   <p align="center">
   <img src="pictures/PMOD Thingy.JPG" alt="Floorplan result" width="400"/>
