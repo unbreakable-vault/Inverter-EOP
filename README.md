@@ -64,7 +64,7 @@ Tektronix MSO2 is used (`https://www.tek.com/en/datasheet/2-series-mso-mixed-sig
 
  
   <p align="center">
-  <img src="/pictures/MSO2.png" alt="Floorplan result" width="400"/>
+  <img src="/pictures/MSO2.png" alt="Floorplan result" width="800"/>
   <br>
 </p>
 
