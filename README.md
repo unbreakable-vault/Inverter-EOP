@@ -57,7 +57,7 @@ Edit `constraints/genesys2_pins.xdc`:
 - Keep identical `IOSTANDARD/DRIVE/SLEW`.
 
 ## Waveform View
-Tekronix MSO2 is used `https://www.tek.com/en/datasheet/2-series-mso-mixed-signal-oscilloscope-datasheet` to measure the skew between `output_A` and `output_B`.
+Tektronix MSO2 is used (`https://www.tek.com/en/datasheet/2-series-mso-mixed-signal-oscilloscope-datasheet`) to measure the skew between `output_A` and `output_B`.
 - AFG Setting: Square, 25 MHz, 3.3 Vpp
 - Channel 1 (`output_A`): 1.1 V/div, 10X Scope, 70Hz Bandwidth
 - Channel 2 (`output_B`): 1.1 V/div, 10X Scope, 70Hz Bandwidth
