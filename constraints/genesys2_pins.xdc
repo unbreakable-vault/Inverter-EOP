@@ -35,4 +35,10 @@ set_property LOCK_PINS {I0:A6} [get_cells B/inv2]
 set_property LOCK_PINS {I0:A6} [get_cells B/inv0]
 set_property LOCK_PINS {I0:A6} [get_cells B/inv1]
 
+set_property DONT_TOUCH true [get_cells {A/inv0 A/inv1 A/inv2 B/inv0 B/inv1 B/inv2 u_xor}]
+
+set_property IS_LOC_FIXED true [get_cells {A/inv0 A/inv1 A/inv2 B/inv0 B/inv1 B/inv2 u_xor}]
+set_property IS_BEL_FIXED true [get_cells {A/inv0 A/inv1 A/inv2 B/inv0 B/inv1 B/inv2 u_xor}]
+
+set_property DONT_TOUCH true [get_nets -hier -quiet {a_int b_int xor_int A/n1 A/n2 B/n1 B/n2}]
 
