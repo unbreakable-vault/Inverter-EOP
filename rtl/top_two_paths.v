@@ -20,7 +20,7 @@ module two_chains(
   LUT2 #(.INIT(4'b0110)) u_xor (.I0(a_int), .I1(b_int), .O(xor_int));
 
   // Drive module outputs (you can put OBUFs here in your top if these go to pins)
-  assign output_A   = a_int;
+  assign output_A   = a_int;                         // assign output_A   = sys_clk; //to test output and input
   assign output_B   = b_int;
   assign output_XOR = xor_int;
 endmodule
