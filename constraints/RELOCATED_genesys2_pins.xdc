@@ -1,0 +1,49 @@
+##output_A is located in the extreme top-left corner
+##output_B is located in the extreme top-right corner
+
+
+
+## --- Input from JA1 ---
+set_property PACKAGE_PIN G14 [get_ports sys_clk]
+set_property IOSTANDARD LVCMOS33 [get_ports sys_clk]
+set_property PULLDOWN true [get_ports sys_clk]
+create_clock -period 40.000 -name sys_clk_ext [get_ports sys_clk]
+
+## --- Outputs to JB1/JB2/JB3 ---
+set_property PACKAGE_PIN B13 [get_ports output_A]
+set_property PACKAGE_PIN D17 [get_ports output_B]
+set_property PACKAGE_PIN G13 [get_ports output_XOR]
+
+set_property IOSTANDARD LVCMOS33 [get_ports output_A]
+set_property IOSTANDARD LVCMOS33 [get_ports output_B]
+set_property IOSTANDARD LVCMOS33 [get_ports output_XOR]
+set_property DRIVE 12 [get_ports output_A]
+set_property DRIVE 12 [get_ports output_B]
+set_property DRIVE 12 [get_ports output_XOR]
+set_property SLEW FAST [get_ports output_A]
+set_property SLEW FAST [get_ports output_B]
+set_property SLEW FAST [get_ports output_XOR]
+
+set_property BEL A6LUT [get_cells A/inv0]
+set_property LOC SLICE_X0Y349 [get_cells A/inv0]
+set_property BEL B6LUT [get_cells A/inv1]
+set_property LOC SLICE_X0Y349 [get_cells A/inv1]
+set_property BEL C6LUT [get_cells A/inv2]
+set_property LOC SLICE_X0Y349 [get_cells A/inv2]
+set_property BEL D6LUT [get_cells B/inv2]
+set_property LOC SLICE_X153Y0 [get_cells B/inv2]
+set_property BEL C6LUT [get_cells B/inv0]
+set_property LOC SLICE_X153Y0 [get_cells B/inv0]
+set_property BEL B6LUT [get_cells B/inv1]
+set_property LOC SLICE_X153Y0 [get_cells B/inv1]
+set_property BEL A6LUT [get_cells u_xor]
+set_property LOC SLICE_X79Y150 [get_cells u_xor]
+set_property LOCK_PINS {I0:A6} [get_cells A/inv2]
+set_property LOCK_PINS {I0:A6} [get_cells A/inv1]
+set_property LOCK_PINS {I0:A6} [get_cells A/inv0]
+set_property LOCK_PINS {I0:A5 I1:A6} [get_cells u_xor]
+set_property LOCK_PINS {I0:A6} [get_cells B/inv2]
+set_property LOCK_PINS {I0:A6} [get_cells B/inv0]
+set_property LOCK_PINS {I0:A6} [get_cells B/inv1]
+
+
