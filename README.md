@@ -35,6 +35,7 @@ XOR:     ────┐    ┌───
 
 
 
+
 The XOR pulse width equals the time difference between the two rising edges.
 - **Conclusion:** Floorplanning and output placement significantly affect skew, visible even at nanosecond resolution.
 
