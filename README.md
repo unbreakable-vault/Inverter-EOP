@@ -29,7 +29,6 @@ OUT_B:   _________/‾‾‾
 Δt:         <---->
 XOR:     ___/‾‾‾‾\____
 ```
-```
 
 
 The XOR pulse width equals the time difference between the two rising edges.
