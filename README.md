@@ -24,13 +24,11 @@ The full report is available here: [Inverter Delay Difference Report](docs/inver
   - WavePro 254HD (2.5 GHz): Δt = 1.819 ns and 2.502 ns.
 
 ```text
-OUT_A:    ─────┐
-              └─────
-OUT_B:        ─────┐
-                   └─────
-Δt:          <---->
-XOR:     ────┐    ┌───
-             └────┘
+OUT_A:   ____/‾‾‾‾‾‾‾‾
+OUT_B:   _________/‾‾‾
+Δt:         <---->
+XOR:     ___/‾‾‾‾\____
+
 
 
 
