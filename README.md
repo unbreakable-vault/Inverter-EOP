@@ -8,18 +8,7 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 
 ![RTL schematic](pictures/inverter_skew_blocks.jpg)
 
-## Measure
-- Probe `OUT_A`, `OUT_B`, and `OUT_XOR` with Mixed Signal Oscilloscope 2 Series MSO
-- Trigger on `OUT_A`; measure at 25 MHz (max value of the AFG)
-- `OUT_XOR` (optional) shows a narrow pulse whose width tracks |Δt|.
 
-```text
-OUT_A:   ____/‾‾‾‾‾‾‾‾
-OUT_B:   _________/‾‾‾
-Δt:         <---->
-XOR:     ___/‾‾‾‾\____
-```
-Here, the XOR pulse width equals the time difference between the two rising edges.
 
 ## 📄 Report: Inverter Chain Output Delay Difference
 
@@ -32,7 +21,16 @@ The full report is available here: [Inverter Delay Difference Report](docs/inver
 - **Method:** Two 3-stage inverter chains driven by the same input, observed on separate channels.
 - **Findings:**  
   - MSO2 (200 MHz): Δt = 1.418 ns (top-left vs bottom-right) and 2.111 ns (top-left vs top-right).  
-  - WavePro 254HD (2.5 GHz): Δt = 1.819 ns and 2.502 ns.  
-- **Conclusion:** Floorplanning and output placement significantly affect skew, visible even at nanosecond resolution:contentReference[oaicite:0]{index=0}.
+  - WavePro 254HD (2.5 GHz): Δt = 1.819 ns and 2.502 ns.
+
+    ```text
+OUT_A:   ____/‾‾‾‾‾‾‾‾
+OUT_B:   _________/‾‾‾
+Δt:         <---->
+XOR:     ___/‾‾‾‾\____
+``
+
+The XOR pulse width equals the time difference between the two rising edges.
+- **Conclusion:** Floorplanning and output placement significantly affect skew, visible even at nanosecond resolution.
 
 
