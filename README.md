@@ -21,51 +21,18 @@ XOR:     ___/‾‾‾‾\____
 ```
 Here, the XOR pulse width equals the time difference between the two rising edges.
 
-### Device Floorplan
-- block_A in the extreme **top‑left**, block_B in the extreme **bottom‑right**, block_XOR centered.
-- **A chain** (`A/inv0..2`) fixed at **SLICE_X0Y349** inside **block_A** (top‑left corner).
-- **B chain** (`B/inv0..2`) fixed at **SLICE_X153Y0** inside **block_B** (bottom‑right corner).
-- **XOR** (`u_xor` LUT2) fixed at **SLICE_X76Y174** inside **block_XOR** (center window X=70..82, Y=168..180).
-- Fabric bounds (Kintex‑7 XC7K325T): **X=0..153, Y=0..349**.
+## 📄 Report: Inverter Chain Output Delay Difference
 
+We documented our FPGA experiment on measuring delay differences between two inverter chains routed to different FPGA locations.  
+The full report is available here: [Inverter Delay Difference Report](docs/inverter_delay_difference_report.pdf).
 
-
-<p align="center">
-  <img src="pictures/FloorPlanning.png" alt="Floorplan result" width="400"/>
-  <br>
-  <em>Floorplan view showing block_A (top-left), block_B (bottom-right), and XOR (center).</em>
-</p>
-
-
-
-## Build
-Tested with **Vivado 2023.1**
-
-**Open Vivado TCL Console and Run:**  
-   ```tcl
-   cd <path-to-repo>/scripts
-   source create_project.tcl
-   source build.tcl
-```
-
-- Program the FPGA from **Hardware Manager**.
-
-## Pins
-Edit `constraints/genesys2_pins.xdc`:
-- Map `sys_clk` to the on-board oscillator pin from the **Genesys-2 Master XDC**.
-- Choose two pins in the **same I/O bank** for `OUT_A` / `OUT_B` (and one for `OUT_XOR`).
-- Keep identical `IOSTANDARD/DRIVE/SLEW`.
-
-## Waveform View
-Tektronix MSO2 is used (`https://www.tek.com/en/datasheet/2-series-mso-mixed-signal-oscilloscope-datasheet`) to measure the skew between `output_A` and `output_B`.
-- AFG Setting: Square, 25 MHz, 3.3 Vpp
-- Channel 1 (`output_A`): 1.1 V/div, 10X Scope, 70Hz Bandwidth
-- Channel 2 (`output_B`): 1.1 V/div, 10X Scope, 70Hz Bandwidth
-
- 
-  <p align="center">
-  <img src="/pictures/MSO2.png" alt="Floorplan result" width="800"/>
-  <br>
-</p>
+### Key Highlights
+- **Objective:** Measure timing skew (Δt) between outputs `OUT_A` and `OUT_B`.
+- **Hardware:** Digilent Genesys-2 (Kintex-7 FPGA), Tektronix 2-Series MSO, LeCroy WavePro 254HD.
+- **Method:** Two 3-stage inverter chains driven by the same input, observed on separate channels.
+- **Findings:**  
+  - MSO2 (200 MHz): Δt = 1.418 ns (top-left vs bottom-right) and 2.111 ns (top-left vs top-right).  
+  - WavePro 254HD (2.5 GHz): Δt = 1.819 ns and 2.502 ns.  
+- **Conclusion:** Floorplanning and output placement significantly affect skew, visible even at nanosecond resolution:contentReference[oaicite:0]{index=0}.
 
 
