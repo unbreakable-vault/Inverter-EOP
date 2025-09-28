@@ -13,7 +13,7 @@ The design implements two parallel 3-inverter chains, both fed by the same `sys_
 ## 📄 Report: Inverter Chain Output Delay Difference
 
 I documented the FPGA experiment on measuring delay differences between two inverter chains routed to different FPGA locations.  
-The full report is available here: [Inverter Delay Difference Report](docs/inverter_delay_difference_report_.pdf)
+The full report is available here: [Inverter Delay Difference Report](docs/inverter_delay_difference_report__.pdf)
 
 
 
