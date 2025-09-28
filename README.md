@@ -23,8 +23,15 @@ The full report is available here: [Inverter Delay Difference Report](docs/inver
   - MSO2 (200 MHz): Δt = 1.418 ns (top-left vs bottom-right) and 2.111 ns (top-left vs top-right).  
   - WavePro 254HD (2.5 GHz): Δt = 1.819 ns and 2.502 ns.
 
-    
-<pre> ```text OUT_A: ─────┐ └───── OUT_B: ─────┐ └───── Δt: <----> XOR: ────┐ ┌─── └────┘ ``` </pre>
+```text
+OUT_A:    ─────┐
+              └─────
+OUT_B:        ─────┐
+                   └─────
+Δt:          <---->
+XOR:     ────┐    ┌───
+             └────┘
+
 
 
 
